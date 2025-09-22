@@ -1,0 +1,15 @@
+entrypoint = "main.sh"
+modules = ["bash", "python-3.12"]
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["bash", "main.sh"]
+deploymentTarget = "cloudrun"
+
+[agent]
+expertMode = true
+
+[objectStorage]
+defaultBucketID = "replit-objstore-80c09f6d-89cf-42bd-bb73-3d545067acf4"
