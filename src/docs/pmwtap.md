@@ -40,11 +40,11 @@ $$r_{\imath\jmath} \leq R_{\mathrm{max},{\imath}}$$
 
 where $r_{\imath\jmath}$ is the distance between $(x_{\imath}, y_{\imath}, z_{\imath})$ and $(x_{\jmath}, y_{\jmath}, z_{\jmath})$, and $R_{\mathrm{max},{\imath}}$ denotes the maximum effective range for weapon $\imath$.
 
-Time-dependent engagement windows arise from relative motion dynamics. For targets moving with velocity vector $\vec{v}_j$ and weapons with engagement preparation time $t_{\mathrm{prep},i}$, the intercept geometry requires:
+Time-dependent engagement windows arise from relative motion dynamics. For targets moving with velocity vector $\vec{v}_{\jmath}$ and weapons with engagement preparation time $t_{\mathrm{prep},\imath}$, the intercept geometry requires:
 
-$$\vec{r}_{\jmath}(t) = \vec{r}_{\jmath}(0) + \vec{v}_j \cdot t$$
+$$\vec{r}_{\jmath}(t) = \vec{r}_{\jmath}(0) + \vec{v}_{\jmath} \cdot t$$
 
-The engagement window exists when the predicted target position remains within the weapon's engagement envelope throughout the interval $[t_{\mathrm{prep},i},\,  t_{\mathrm{prep},i} + t_{\mathrm{engagement},i}]$ where $t_{\mathrm{engagement},i}$ represents the duration of time that weapon $\imath$ requires to complete its engagement sequence against a target.
+The engagement window exists when the predicted target position remains within the weapon's engagement envelope throughout the interval $[t_{\mathrm{prep},\imath},\,  t_{\mathrm{prep},\imath} + t_{\mathrm{engagement},\imath}]$ where $t_{\mathrm{engagement},\imath}$ represents the duration of time that weapon $\imath$ requires to complete its engagement sequence against a target.
 
 ## Resource Depletion Dynamics
 
