@@ -52,13 +52,13 @@ Weapon system limitations introduce discrete resource constraints that couple in
 
 $$\sum_{\jmath=1}^{N_{\mathrm{targets}}} \delta_{\imath\jmath} \cdot n_{\mathrm{rounds},\imath\jmath} \leq C_{\mathrm{available},\imath}$$
 
-where $\delta_{ij}$ represents the binary assignment variable,[^bav] $n_{\mathrm{rounds},\imath\jmath}$ denotes the number of rounds required for engagement, and $C_{\mathrm{available},\imath}$ represents available ammunition for weapon $\imath$.
+where $\delta_{\imath\jmath}$ represents the binary assignment variable,[^bav] $n_{\mathrm{rounds},\imath\jmath}$ denotes the number of rounds required for engagement, and $C_{\mathrm{available},\imath}$ represents available ammunition for weapon $\imath$.
 
 Thermal management constraints for rapid-fire systems introduce duty cycle limitations:[^bvi]
 
 $$\sum_{\jmath} \delta_{\imath\jmath} \cdot t_{\mathrm{engagement},\imath\jmath} \cdot P_{\mathrm{thermal},\imath} \leq \frac{Q_{\mathrm{max},\imath}}{k_{\mathrm{cooling},\imath}}$$
 
-where $P_{\mathrm{thermal},\imath}$ represents thermal power generation per engagement, $Q_{\mathrm{max},i}$ denotes maximum thermal capacity, and $l_{\mathrm{cooling},\imath}$ captures cooling system effectiveness.
+where $P_{\mathrm{thermal},\imath}$ represents thermal power generation per engagement, $Q_{\mathrm{max},\imath}$ denotes maximum thermal capacity, and $l_{\mathrm{cooling},\imath}$ captures cooling system effectiveness.
 
 This mathematical framework establishes the physical foundation necessary for formulating the subsequent optimization problem, ensuring that all constraint relationships reflect realistic operational limitations and measurable system parameters.
 
