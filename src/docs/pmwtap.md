@@ -1,3 +1,4 @@
+
 # Physical Modeling of the Weapon Target Assignment Problem
 
 Claude Sonnet 4, Kam Modjtahedzadeh  
@@ -58,7 +59,7 @@ Thermal management constraints for rapid-fire systems introduce duty cycle limit
 
 $$\sum_{\jmath} \delta_{\imath\jmath} \cdot t_{\mathrm{engagement},\imath\jmath} \cdot P_{\mathrm{thermal},\imath} \leq \frac{Q_{\mathrm{max},\imath}}{k_{\mathrm{cooling},\imath}}$$
 
-where $P_{\mathrm{thermal},\imath}$ represents thermal power generation per engagement, $Q_{\mathrm{max},\imath}$ denotes maximum thermal capacity, and $l_{\mathrm{cooling},\imath}$ captures cooling system effectiveness.
+where $P_{\mathrm{thermal},\imath}$ represents thermal power generation per engagement, $Q_{\mathrm{max},\imath}$ denotes maximum thermal capacity, and $k_{\mathrm{cooling},\imath}$ captures cooling system effectiveness.
 
 This mathematical framework establishes the physical foundation necessary for formulating the subsequent optimization problem, ensuring that all constraint relationships reflect realistic operational limitations and measurable system parameters.
 
