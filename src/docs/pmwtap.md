@@ -1,4 +1,5 @@
 
+
 # Physical Modeling of the Weapon Target Assignment Problem
 
 Claude Sonnet 4, Kam Modjtahedzadeh
@@ -15,7 +16,7 @@ $$P_{\mathrm{kill}}(\imath,\jmath) = 1 - e^{-\alpha_{\imath\jmath} \cdot E_{\mat
 
 where $\alpha_{\imath\jmath}$ represents the target-weapon vulnerability coefficient and $E_{\mathrm{delivered}}(\imath,\jmath)$ denotes the effective energy transfer. The vulnerability coefficient incorporates target-specific parameters including armor effectiveness $A_{\jmath}$, critical component density $\rho_{\jmath}$,[^ccd] and structural integrity factor $S_{\jmath}$ through the relationship:
 
-$$\alpha_{\imath\jmath} = \frac{\beta_{\imath\jmath}}{A_{\jmath} \cdot S_{\jmath}} \cdot f(\rho_{\jmath})$$
+$$\alpha_{\imath\jmath} = \frac{\beta_{\imath}}{A_{\jmath} \cdot S_{\jmath}} \cdot f(\rho_{\jmath})$$
 
 Here, $\beta_{\imath}$ represents the weapon's intrinsic lethality parameter, while $f(\rho_{\jmath})$ serves as a spatial distribution modifier that translates the raw density of critical components into a vulnerability factor.
 
