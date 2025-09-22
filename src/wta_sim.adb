@@ -6,11 +6,44 @@ procedure weapon_target_assignment is
     package Float_Elementary_Functions is new Ada.Numerics.Generic_Elementary_Functions(Float);
 
     use Ada.Strings;
-    use Ada.Text_IO;  -- Include this line to use Put_Line directly
+    use Ada.Text_IO;
     use Float_Elementary_Functions;
 
-    -- preamable
+    type Weapon is record
+        x, y, z      : Float;
+        beta         : Float;    -- intrinsic lethality
+        R_max        : Float;    -- max effective range
+        C_available  : Natural;  -- ammunition count
+    end record;
+
+    type Target is record
+        x, y, z      : Float;
+        vx, vy, vz   : Float;    -- velocity components
+        A            : Float;    -- armor effectiveness
+        S            : Float;    -- structural integrity
+        rho          : Float;    -- critical component density
+    end record;
+
+    -- Calculate distance between weapon i and target j
+    function Distance(w : Weapon; t : Target) return Float is
+    begin
+        return Sqrt((w.x - t.x)**2 + (w.y - t.y)**2 + (w.z - t.z)**2);
+    end Distance;
+
+    -- Check if target is in range
+    function In_Range(w : Weapon; t : Target) return Boolean is
+    begin
+        return Distance(w, t) <= w.R_max;
+    end In_Range;
 
 begin
-    -- Main procedure
+    declare
+        w1 : Weapon := (x => 0.0, y => 0.0, z => 0.0, beta => 1.0, R_max => 100.0, C_available => 10);
+        t1 : Target := (x => 50.0, y => 30.0, z => 0.0, vx => 0.0, vy => 0.0, vz => 0.0, A => 2.0, S => 1.5, rho => 0.8);
+        dist : Float;
+    begin
+        dist := Distance(w1, t1);
+        Put_Line(Fixed.Trim("Weapon 1 to Target 1 distance: " & Float'Image(dist) & " m", Left));
+        Put_Line(Fixed.Trim("Target in range: " & Boolean'Image(In_Range(w1, t1)), Left));
+    end;
 end weapon_target_assignment;

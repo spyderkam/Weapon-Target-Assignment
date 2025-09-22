@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-filename=wta_sim.adb
+filename=wta_sim
 
 cd src
 gnatmake ${filename}.adb
