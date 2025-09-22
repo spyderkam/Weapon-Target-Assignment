@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-filename=particle_field
+filename=wta_sim.adb
 
 cd src
 gnatmake ${filename}.adb
