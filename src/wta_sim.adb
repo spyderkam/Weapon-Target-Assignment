@@ -13,4 +13,4 @@ procedure weapon_target_assignment is
 
 begin
     -- Main procedure
-end test;
+end weapon_target_assignment;
