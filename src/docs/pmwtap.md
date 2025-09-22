@@ -1,9 +1,7 @@
-
-
 # Physical Modeling of the Weapon Target Assignment Problem
 
-Claude Sonnet 4, Kam Modjtahedzadeh
-Lockheed Martin & Northrop Grumman 
+Claude Sonnet 4, Kam Modjtahedzadeh  
+Lockheed Martin & Northrop Grumman  
 September 16, 2025 &ndash; September 19, 2025
 
 > The weapon target assignment problem requires a comprehensive physical model that captures the fundamental relationships between weapon systems, target characteristics, and engagement dynamics through quantitative mathematical expressions.
