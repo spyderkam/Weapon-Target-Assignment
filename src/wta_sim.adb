@@ -25,25 +25,25 @@ procedure weapon_target_assignment is
     end record;
 
     -- Calculate distance between weapon i and target j
-    function Distance(w : Weapon; t : Target) return Float is
+    function Distance(w: Weapon; t: Target) return Float is
     begin
         return Sqrt((w.x - t.x)**2 + (w.y - t.y)**2 + (w.z - t.z)**2);
     end Distance;
 
     -- Check if target is in range
-    function In_Range(w : Weapon; t : Target) return Boolean is
+    function In_Range(w: Weapon; t: Target) return Boolean is
     begin
         return Distance(w, t) <= w.R_max;
     end In_Range;
 
 begin
     declare
-        w1 : Weapon := (x => 0.0, y => 0.0, z => 0.0, beta => 1.0, R_max => 100.0, C_available => 10);
-        t1 : Target := (x => 50.0, y => 30.0, z => 0.0, vx => 0.0, vy => 0.0, vz => 0.0, A => 2.0, S => 1.5, rho => 0.8);
-        dist : Float;
+        weap1 : Weapon := (x => 0.0, y => 0.0, z => 0.0, beta => 1.0, R_max => 100.0, C_available => 10);
+        targ1 : Target := (x => 50.0, y => 30.0, z => 0.0, vx => 0.0, vy => 0.0, vz => 0.0, A => 2.0, S => 1.5, rho => 0.8);
+        dist  : Float;
     begin
-        dist := Distance(w1, t1);
+        dist := Distance(weap1, targ1);
         Put_Line(Fixed.Trim("Weapon 1 to Target 1 distance: " & Float'Image(dist) & " m", Left));
-        Put_Line(Fixed.Trim("Target in range: " & Boolean'Image(In_Range(w1, t1)), Left));
+        Put_Line(Fixed.Trim("Target in range: " & Boolean'Image(In_Range(weap1, targ1)), Left));
     end;
 end weapon_target_assignment;
