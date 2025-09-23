@@ -1,0 +1,24 @@
+#!/bin/bash 
+
+### Check if any argument is provided 
+if [ $# -eq 0 ]; then 
+    echo "Usage: bash <https://web.prod.am-usge1.moveworks.io/r?v2_EzxiSW8U2WZpEM7I|open.sh> <filename>" 
+    exit 1 
+fi 
+
+FILENAME=$1 
+MATCHES=($(find . -name "$FILENAME")) 
+
+### Determine the number of matches found 
+MATCH_COUNT=${#MATCHES[@]} 
+
+if [ $MATCH_COUNT -eq 0 ]; then 
+    echo "File '$FILENAME' not found." 
+    exit 1 
+elif [ $MATCH_COUNT -eq 1 ]; then 
+    vim "${MATCHES}" 
+else 
+    echo "Multiple files found:" 
+    printf '%s\n' "${MATCHES[@]}" 
+    exit 1 
+fi
