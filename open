@@ -16,7 +16,9 @@ if [ $MATCH_COUNT -eq 0 ]; then
     echo "File '$FILENAME' not found." 
     exit 1 
 elif [ $MATCH_COUNT -eq 1 ]; then 
+    #mv ~/workspace/.vimrc ~/.vimrc
     vim "${MATCHES}" 
+    #mv ~/.vimrc ~/workspace/.vimrc
 else 
     echo "Multiple files found:" 
     printf '%s\n' "${MATCHES[@]}" 
