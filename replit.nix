@@ -1,5 +1,6 @@
 { pkgs }: {
   deps = [
+    pkgs.tcsh
     pkgs.vim
     pkgs.gnatPackages.gnat
     pkgs.bashInteractive
