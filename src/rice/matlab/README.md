@@ -1,5 +1,3 @@
-rdmamc
-rdmamc
 # Rice Distribution: Mathematical Analysis of MATLAB Code
 
 > This document analyzes MATLAB implementations of the Rice distribution written by Sam Thompson. The code primarily computes the Rice CDF using an asymptotic approximation valid for large and normalized parameters generating lookup tables as matrices with the values representing the Rice CDF evaluated at different combinations of $\nu$ (non-centrality parameter) and $b$ (evaluation point).
@@ -1237,5 +1235,3 @@ exact
 50
 ×
  50× finer resolution.​​​​​​​​​​​​​​​​ ↩︎
-
-Markdown 7225 bytes 912 words 112 lines Ln 82, Col 150HTML 7296 characters 899 words 63 paragraphs
