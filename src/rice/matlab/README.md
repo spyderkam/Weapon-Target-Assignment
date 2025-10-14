@@ -1,3 +1,4 @@
+
 # Rice Distribution: Mathematical Analysis of MATLAB Code
 
 > This document analyzes MATLAB implementations of the Rice distribution written by Sam Thompson. The code primarily computes the Rice CDF using an asymptotic approximation valid for large and normalized parameters generating lookup tables as matrices with the values representing the Rice CDF evaluated at different combinations of ν (non-centrality parameter) and b (evaluation point).
@@ -99,17 +100,17 @@ $$
 
 The `genRiceTable.m` script creates a lookup table with:
 
-- **ν values:** ranging from 2 to 150 (in steps, relative to σ = 10)
-- **b values:** ranging from approximately 48.68 to 150
-- **Output:** 150×150 matrix of CDF values using the asymptotic approximation
+- **ν values:** ranging from $2$ to $150$ (in steps, relative to σ = $10$)
+- **b values:** ranging from approximately $48.68$ to $150$
+- **Output:** $150×150$ matrix of CDF values using the asymptotic approximation
 
 Each row corresponds to a different $\nu$ value, each column to a different $b$ value. The matrix element at position $(i,j)$ contains $\mathcal{C}(b_j; \nu_i, \sigma)$.
 
 The `rice_cdf_table.m` script creates a finer table for smaller values:[^finer]
 
-- **ν values:** 0 to 4 (200 points, relative to σ = 1)
-- **b values:** 0 to 4 (200 points)
-- **Output:** 200×200 matrix comparing asymptotic and exact values
+- **ν values:** $0$ to $4$ ($200$ points, relative to σ = $1$)
+- **b values:** $0$ to $4$ ($200$ points)
+- **Output:** $200×200$ matrix comparing asymptotic and exact values
   - Matrix values: $\mathcal{C}_{\mathrm{exact}}$ (from the `q` output of `calc_rice_cdf_asymp`)
 
 Note that while it calculates both $\mathcal{C}_{\mathrm{asymp}}$ and $\mathcal{C}_{\mathrm{exact}}$, it only saves $\mathcal{C}_{\mathrm{exact}}$ to the table.
@@ -126,4 +127,4 @@ Note that while it calculates both $\mathcal{C}_{\mathrm{asymp}}$ and $\mathcal{
 
 [^C_vs_pq]: In the MATLAB code, $\mathcal{C}_{\mathrm{asymp}}$ and $\mathcal{C}_{\mathrm{exact}}$ are `p` and `q` respectively.
 
-[^finer]: "Finer" here means higher resolution; i.e., more densely sampled. The 200×200 table covers a smaller range [0,4] with 200 points, giving a spacing of 0.02 between points. The 150×150 table covers a much larger range [2,150] with only 150 points, giving a spacing of about 0.99. So the small-value table has ~50× finer resolution.
+[^finer]: "Finer" here means higher resolution; i.e., more densely sampled. The $200×200$ table covers a smaller range $[0,4]$ with $200$ points, giving a spacing of $0.02$ between points. The $150×150$ table covers a much larger range $[2,150]$ with only $150$ points, giving a spacing of about $0.99$. So the small-value table has $~50×$ finer resolution.
