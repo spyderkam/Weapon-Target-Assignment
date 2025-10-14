@@ -36,13 +36,11 @@ This integral generally has no closed-form solution and must be evaluated numeri
 
 ## 2. Analysis of MATLAB Code
 
-### 2.1 Code Structure Overview
-
 The provided MATLAB scripts implement: *asymptotic approximation* for the Rice CDF, *exact numerical integration* for comparison, and *lookup table generation* for efficient computation.
 
-### 2.2 Mathematical Expressions Extracted
+### 2.1 Mathematical Expressions Extracted
 
-#### 2.2.1 Normalization and Gaussian Components
+#### 2.1.1 Normalization and Gaussian Components
 
 The code first normalizes the parameters with respect to $\sigma$:
 
@@ -73,7 +71,7 @@ $$\mathcal{C}(b) \approx \mathcal{C}_{\mathrm{norm}}(b) - \frac{\mathcal{P}_{\ma
 
 uses the Gaussian CDF as the leading term, with a correction factor involving the Gaussian PDF. This correction accounts for the slight asymmetry of the Rice distribution compared to a true Gaussian.
 
-#### 2.2.2 Asymptotic and Exact Calculation[^C_vs_pq]
+#### 2.1.2 Asymptotic and Exact Calculation[^C_vs_pq]
 
 The key asymptotic formula for the Rice CDF is:
 
@@ -83,7 +81,7 @@ This approximation is valid for large values of $z = {b\nu}/{\sigma^2}$. The exa
 
 $$ \mathcal{C}_{\mathrm{exact}} = \int_0^{b_{\mathrm{norm}}} x \exp\left(-\frac{x^2 + \nu_{\mathrm{norm}}^2}{2}\right) I_0(\nu_{\mathrm{norm}} \cdot x) \,dx $$
 
-### 2.3 Lookup Table Generation
+### 2.2 Lookup Table Generation
 
 The `genRiceTable.m` script creates a lookup table with:
 
