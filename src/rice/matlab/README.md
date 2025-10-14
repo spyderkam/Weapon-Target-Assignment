@@ -116,13 +116,9 @@ The `rice_cdf_table.m` script creates a finer table for smaller values:[^finer]
 
 Note that while it calculates both $\mathcal{C}_{\mathrm{asymp}}$ and $\mathcal{C}_{\mathrm{exact}}$, it only saves $\mathcal{C}_{\mathrm{exact}}$ to the table.
 
----
 
-[^bnrv]: A bivariate normal random variable is a 2D variable where each dimension is Gaussian (in distribution); i.e., a pair of random variables $(X, Y)$ that follow a joint normal (Gaussian) distribution together. Mathematically, it is characterized by: two means ($\mu_{x}$ and $\mu_{y}$), two variances ($\sigma_{x}^2$ and $\sigma_{y}^2$), and one correlation coefficient ($\rho$). The joint PDF is:
-    $$
-    \mathcal{P}(x,y) = \frac{1}{2\pi\sigma_{x}\sigma_{y}\sqrt{1-\rho^2}} \exp\left(-\frac{1}{2(1-\rho^2)}\left[\frac{(x-\mu_{x})^2}{\sigma_{x}^2} - \frac{2\rho(x-\mu_{x})(y-\mu_{y})}{\sigma_{x}\sigma_{y}} + \frac{(y-\mu_{y})^2}{\sigma_{y}^2}\right]\right)
-    $$
-    In the Rice distribution context, we have the special case where $X$ and $Y$ are *independent* (so $\rho = 0$); they have equal variances ($\sigma_{x}^2 = \sigma_{y}^2 = \sigma^2$). This represents a 2D Gaussian *cloud* centered at $(\mu_{x}, \mu_{y})$. The Rice distribution then describes the distance from the origin to a random point sampled from this cloud: $r = \sqrt{x^2 + y^2}$.
+
+[^bnrv]: A bivariate normal random variable is a 2D variable where each dimension is Gaussian (in distribution); i.e., a pair of random variables $(X, Y)$ that follow a joint normal (Gaussian) distribution together. Mathematically, it is characterized by: two means ($\mu_{x}$ and $\mu_{y}$), two variances ($\sigma_{x}^2$ and $\sigma_{y}^2$), and one correlation coefficient ($\rho$). The joint PDF is: $$ \mathcal{P}(x,y) = \frac{1}{2\pi\sigma_{x}\sigma_{y}\sqrt{1-\rho^2}} \exp\left(-\frac{1}{2(1-\rho^2)}\left[\frac{(x-\mu_{x})^2}{\sigma_{x}^2} - \frac{2\rho(x-\mu_{x})(y-\mu_{y})}{\sigma_{x}\sigma_{y}} + \frac{(y-\mu_{y})^2}{\sigma_{y}^2}\right]\right) $$ In the Rice distribution context, we have the special case where $X$ and $Y$ are *independent* (so $\rho = 0$); they have equal variances ($\sigma_{x}^2 = \sigma_{y}^2 = \sigma^2$). This represents a 2D Gaussian *cloud* centered at $(\mu_{x}, \mu_{y})$. The Rice distribution then describes the distance from the origin to a random point sampled from this cloud: $r = \sqrt{x^2 + y^2}$.
 
 [^mqf]: This is a well-known asymptotic expansion for the Marcum Q-function (which is closely related to the Rice CDF). The formula comes from asymptotic analysis of the Bessel function $I_0$ for large arguments.
 
