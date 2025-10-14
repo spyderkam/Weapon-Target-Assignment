@@ -1,4 +1,5 @@
 
+
 # Rice Distribution: Mathematical Analysis of MATLAB Code
 
 > This document analyzes MATLAB implementations of the Rice distribution written by Sam Thompson. The code primarily computes the Rice CDF using an asymptotic approximation valid for large and normalized parameters generating lookup tables as matrices with the values representing the Rice CDF evaluated at different combinations of ν (non-centrality parameter) and b (evaluation point).
@@ -55,9 +56,9 @@ The code first normalizes the parameters with respect to $\sigma$:
 
 $$
 \begin{align*}
-b_{\mathrm{norm}} &= \frac{b}{\sigma} \\
-\nu_{\mathrm{norm}} &= \frac{\nu}{\sigma} \\
-z &= b_{\mathrm{norm}} \cdot \nu_{\mathrm{norm}} = \frac{b\nu}{\sigma^2}
+    &b_{\mathrm{norm}} = \frac{b}{\sigma} \\
+    &\nu_{\mathrm{norm}} = \frac{\nu}{\sigma} \\
+    &z = b_{\mathrm{norm}} \cdot \nu_{\mathrm{norm}} = \frac{b\nu}{\sigma^2}
 \end{align*}
 $$
 
@@ -67,8 +68,8 @@ The normalized Gaussian PDF and CDF at point $b$:
 
 $$
 \begin{align*}
-\mathcal{P}_{\mathrm{norm}}(b) &= \frac{1}{\sqrt{2\pi}} \exp\left[-\frac{1}{2}(b_{\mathrm{norm}} - \nu_{\mathrm{norm}})^2\right] \\
-\mathcal{C}_{\mathrm{norm}}(b) &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{b_{\mathrm{norm}}} \exp\left[-\frac{1}{2}(t - \nu_{\mathrm{norm}})^2\right] dt
+    &\mathcal{P}_{\mathrm{norm}}(b) = \frac{1}{\sqrt{2\pi}} \exp\left[-\frac{1}{2}(b_{\mathrm{norm}} - \nu_{\mathrm{norm}})^2\right] \\
+    &\mathcal{C}_{\mathrm{norm}}(b) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{b_{\mathrm{norm}}} \exp\left[-\frac{1}{2}(t - \nu_{\mathrm{norm}})^2\right] dt
 \end{align*}
 $$
 
@@ -100,7 +101,7 @@ $$
 
 The `genRiceTable.m` script creates a lookup table with:
 
-- **ν values:** ranging from $2$ to $150$ (in steps, relative to σ = $10$)
+- **ν values:** ranging from $2$ to $150$ (in steps, relative to $σ$ = $10$)
 - **b values:** ranging from approximately $48.68$ to $150$
 - **Output:** $150×150$ matrix of CDF values using the asymptotic approximation
 
@@ -108,7 +109,7 @@ Each row corresponds to a different $\nu$ value, each column to a different $b$ 
 
 The `rice_cdf_table.m` script creates a finer table for smaller values:[^finer]
 
-- **ν values:** $0$ to $4$ ($200$ points, relative to σ = $1$)
+- **ν values:** $0$ to $4$ ($200$ points, relative to $σ$ = $1$)
 - **b values:** $0$ to $4$ ($200$ points)
 - **Output:** $200×200$ matrix comparing asymptotic and exact values
   - Matrix values: $\mathcal{C}_{\mathrm{exact}}$ (from the `q` output of `calc_rice_cdf_asymp`)
