@@ -18,16 +18,16 @@ if [ $MATCH_COUNT -eq 0 ]; then
 elif [ $MATCH_COUNT -eq 1 ]; then 
     # Create .vimrc in home directory if it doesn't exist
     if [ ! -f ~/.vimrc ]; then
-        cat > ~/.vimrc << 'EOF'
-" Display existing tab characters as 4 spaces
-set tabstop=4
-" Use 4 spaces for each step of (auto)indent
-set shiftwidth=4
-" When the <Tab> key is pressed, insert spaces instead of a tab character
-set expandtab
-" Ensure syntax highlighting remains enabled
-syntax on
-
+        cat > ~/.vimrc <<'EOF'
+        " Display existing tab characters as 4 spaces
+        set tabstop=4
+        " Use 4 spaces for each step of (auto)indent
+        set shiftwidth=4
+        " When the <Tab> key is pressed, insert spaces instead of a tab character
+        set expandtab
+        " Ensure syntax highlighting remains enabled
+        syntax on
+        
 EOF
     fi
     vim "${MATCHES}" 
