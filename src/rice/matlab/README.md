@@ -22,15 +22,15 @@ represents the distance of the mean from the origin (the non-centrality paramete
 
 The Rice PDF is given by:
 
-$$ \mathcal{P}(x; \nu, \sigma) = \frac{x}{\sigma^2} \exp\left(-\frac{x^2 + \nu^2}{2\sigma^2}\right) I_0\left(\frac{x\nu}{\sigma^2}\right) $$
+$$ \mathcal{P}(r; \nu, \sigma) = \frac{r}{\sigma^2} \exp\left(-\frac{r^2 + \nu^2}{2\sigma^2}\right) I_0\left(\frac{r\nu}{\sigma^2}\right) $$
 
-where $x \geq 0$ is the random variable, $\nu \geq 0$ is the non-centrality parameter (offset from origin), $\sigma > 0$ is the scale parameter, and $I_0$ is the modified Bessel function of the first kind of order zero.
+where $r \geq 0$ is the radial distance of the random variable, $\nu \geq 0$ is the non-centrality parameter (offset from origin), $\sigma > 0$ is the scale parameter, and $I_0$ is the modified Bessel function of the first kind of order zero.
 
 ### 1.3 Cumulative Distribution Function
 
 The CDF of the Rice distribution is:
 
-$$ \mathcal{C}(x; \nu, \sigma) = \int_0^x \frac{t}{\sigma^2} \exp\left(-\frac{t^2 + \nu^2}{2\sigma^2}\right) I_0\left(\frac{t\nu}{\sigma^2}\right) dt $$
+$$ \mathcal{C}(r; \nu, \sigma) = \int_0^r \frac{t}{\sigma^2} \exp\left(-\frac{t^2 + \nu^2}{2\sigma^2}\right) I_0\left(\frac{t\nu}{\sigma^2}\right) dt $$
 
 This integral generally has no closed-form solution and must be evaluated numerically.
 
@@ -109,4 +109,3 @@ Note that while it calculates both `p` (asymptotic) and `q` (exact), it only sav
 [^mqf]: This is a well-known asymptotic expansion for the Marcum Q-function (which is closely related to the Rice CDF). The formula comes from asymptotic analysis of the Bessel function $I_0$ for large arguments.
 
 [^C_vs_pq]: In the MATLAB code, $\mathcal{C}_{\mathrm{asymp}}$ and $\mathcal{C}_{\mathrm{exact}}$ are `p` and `q` respectively.
-
