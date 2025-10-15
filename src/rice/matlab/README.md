@@ -1,8 +1,6 @@
-
-
 # Rice Distribution: Mathematical Analysis of MATLAB Code
 
-> This document analyzes MATLAB implementations of the Rice distribution written by Sam Thompson. The code primarily computes the Rice CDF using an asymptotic approximation valid for large and normalized parameters generating lookup tables as matrices with the values representing the Rice CDF evaluated at different combinations of ν (non-centrality parameter) and b (evaluation point).
+> This document analyzes MATLAB implementations of the Rice distribution written by Sam Thompson. The code primarily computes the Rice CDF using an asymptotic approximation valid for large and normalized parameters generating lookup tables as matrices with the values representing the Rice CDF evaluated at different combinations of $ν$ (non-centrality parameter) and b (evaluation point).
 
 ## 1. Mathematical Background: The Rice Distribution
 
@@ -101,18 +99,18 @@ $$
 
 The `genRiceTable.m` script creates a lookup table with:
 
-- **$ν$ values:** ranging from $2$ to $150$ (in steps, relative to $σ$ = $10$)
-- **$b$ values:** ranging from approximately $48.68$ to $150$
-- **Output:** $150×150$ matrix of CDF values using the asymptotic approximation
+  - **$ν$ values:** ranging from $2$ to $150$ (in steps, relative to $σ$ = $10$)
+  - **$b$ values:** ranging from approximately $48.68$ to $150$
+  - **Output:** $150×150$ matrix of CDF values using the asymptotic approximation
 
 Each row corresponds to a different $\nu$ value, each column to a different $b$ value. The matrix element at position $(i,j)$ contains $\mathcal{C}(b_j; \nu_i, \sigma)$.
 
 The `rice_cdf_table.m` script creates a finer table for smaller values:[^finer]
 
-- **$ν$ values:** $0$ to $4$ ($200$ points, relative to $σ$ = $1$)
-- **$b$ values:** $0$ to $4$ ($200$ points)
-- **Output:** $200×200$ matrix comparing asymptotic and exact values
-  - Matrix values: $\mathcal{C}_{\mathrm{exact}}$ (from the `q` output of `calc_rice_cdf_asymp`)
+  - **$ν$ values:** $0$ to $4$ ($200$ points, relative to $σ$ = $1$)
+  - **$b$ values:** $0$ to $4$ ($200$ points)
+  - **Output:** $200×200$ matrix comparing asymptotic and exact values
+    - Matrix values: $\mathcal{C}_{\mathrm{exact}}$ (from the `q` output of `calc_rice_cdf_asymp`)
 
 Note that while it calculates both $\mathcal{C}_{\mathrm{asymp}}$ and $\mathcal{C}_{\mathrm{exact}}$, it only saves $\mathcal{C}_{\mathrm{exact}}$ to the table.
 
