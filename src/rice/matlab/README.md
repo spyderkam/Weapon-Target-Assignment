@@ -1,6 +1,6 @@
 # Rice Distribution: Mathematical Analysis of MATLAB Code
 
-> This document analyzes MATLAB implementations of the Rice distribution written by Sam Thompson. The code primarily computes the Rice CDF using an asymptotic approximation valid for large and normalized parameters generating lookup tables as matrices with the values representing the Rice CDF evaluated at different combinations of $ν$ (non-centrality parameter) and b (evaluation point).
+> This document analyzes MATLAB implementations of the Rice distribution written by Sam Thompson. The code primarily computes the Rice CDF using an asymptotic approximation valid for large and normalized parameters generating lookup tables as matrices with the values representing the Rice CDF evaluated at different combinations of $ν$ (non-centrality parameter) and $b$ (evaluation point).
 
 ## 1. Mathematical Background: The Rice Distribution
 
