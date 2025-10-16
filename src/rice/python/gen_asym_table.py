@@ -22,4 +22,3 @@ augmented[1:, 1:] = T_asymptotic  # The 150x150 data matrix
 
 np.savetxt("riceTable_bv.csv", augmented, delimiter=',', fmt='%.4f')
 print("Saved 150×150 asymptotic table with b and v values to: riceTable_bv.csv")
-print("(Note: Apply light purple color to first row and column in your spreadsheet application)")
