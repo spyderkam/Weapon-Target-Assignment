@@ -5,12 +5,12 @@ Rice Distribution CDF Calculation and Lookup Table Generation
 Python translation of MATLAB scripts for Rice distribution analysis
 """
 
-import numpy as np
-import pandas as pd
 from pathlib import Path
 from scipy import integrate, special
 from scipy.stats import norm
-from typing import Tuple, Optional
+from typing import Optional, Tuple
+import numpy as np
+import pandas as pd
 
 
 def calc_rice_cdf_asymp(v: float, sig: float, b: float) -> Tuple[float, float]:
@@ -33,6 +33,7 @@ def calc_rice_cdf_asymp(v: float, sig: float, b: float) -> Tuple[float, float]:
     q : float
         Exact Rice CDF value
     """
+    
     # Rescale inputs wrt sigma
     b_norm = b / sig
     v_norm = v / sig
@@ -70,6 +71,7 @@ def rice_cdf_table_small() -> np.ndarray:
     T : np.ndarray
         200x200 matrix of exact Rice CDF values
     """
+    
     v_vals = np.linspace(0, 4, 200)
     b_vals = np.linspace(0, 4, 200)
     T = np.zeros((200, 200))
@@ -94,6 +96,7 @@ def gen_rice_table() -> np.ndarray:
     T : np.ndarray
         150x150 matrix of asymptotic Rice CDF values
     """
+    
     # Create lookup table for larger offsets (relative to sigma)
     v_vals = np.linspace(2, 150, 150)
     b_vals = np.linspace(48.6846, 150, 150)
@@ -128,6 +131,7 @@ def save_rice_tables(output_dir: Optional[Path] = None) -> None:
     output_dir : Path, optional
         Directory to save output files. Defaults to current directory.
     """
+    
     if output_dir is None:
         output_dir = Path.cwd()
     else:
@@ -171,9 +175,7 @@ def save_rice_tables(output_dir: Optional[Path] = None) -> None:
 
 
 class RiceLookupTable:
-    """
-    Class for loading and interpolating Rice distribution lookup tables.
-    """
+    """Class for loading and interpolating Rice distribution lookup tables."""
     
     def __init__(self, table_path: Path):
         """
@@ -184,6 +186,7 @@ class RiceLookupTable:
         table_path : Path
             Path to .npy or .csv file containing the lookup table
         """
+        
         if table_path.suffix == '.npy':
             self.table = np.load(table_path)
         elif table_path.suffix == '.csv':
@@ -221,6 +224,7 @@ class RiceLookupTable:
         float
             Interpolated Rice CDF value
         """
+        
         # Map v and b to table indices
         v_idx = (v - self.v_range[0]) / (self.v_range[1] - self.v_range[0]) * (self.shape[0] - 1)
         b_idx = (b - self.b_range[0]) / (self.b_range[1] - self.b_range[0]) * (self.shape[1] - 1)
