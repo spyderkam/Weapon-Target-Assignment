@@ -6,10 +6,10 @@ Python translation of MATLAB scripts for Rice distribution analysis
 """
 
 import numpy as np
-from scipy import integrate, special
-from scipy.stats import norm
 import pandas as pd
 from pathlib import Path
+from scipy import integrate, special
+from scipy.stats import norm
 from typing import Tuple, Optional
 
 
@@ -142,7 +142,7 @@ def save_rice_tables(output_dir: Optional[Path] = None) -> None:
     
     # Save as CSV
     large_csv_path = output_dir / "riceTable.csv"
-    np.savetxt(large_csv_path, T_large, delimiter=',')
+    np.savetxt(large_csv_path, T_large, delimiter=',', fmt='%.4f')
     print(f"\nSaved large value table to: {large_csv_path}")
     
     # Save as numpy binary for efficient loading
@@ -157,7 +157,7 @@ def save_rice_tables(output_dir: Optional[Path] = None) -> None:
     # Save as CSV using pandas for better formatting
     small_csv_path = output_dir / "rice_lookup.csv"
     df_small = pd.DataFrame(T_small)
-    df_small.to_csv(small_csv_path, index=False)
+    df_small.to_csv(small_csv_path, index=False, float_format='%.4f')
     print(f"\nSaved small value table to: {small_csv_path}")
     
     # Save as numpy binary
