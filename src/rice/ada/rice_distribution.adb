@@ -5,14 +5,16 @@ package body Rice_Distribution is
    -- v values: 2 to 150 (150 points)
    -- b values: 48.6846 to 150 (150 points)
    -- sigma = 10
+   
    Rice_Lookup : constant Rice_Table := (
-      -- Row 1 (v=2)
+      -- Row 1 (v = 2)
       1 => (others => 0.0),  -- Replace with actual values from CSV
-      -- Row 2 (v=~3.01)
+      -- Row 2 (v ≈ 3.01)
       2 => (others => 0.0),  -- Replace with actual values from CSV
       -- ... Continue for all 150 rows
       others => (others => 0.0)  -- Placeholder
    );
+
 
    function Bilinear_Interpolate(
       v_idx : Float; 
@@ -21,9 +23,9 @@ package body Rice_Distribution is
    ) return Float is
       
       -- Get integer indices
-      v_low : Integer := Integer(Float'Floor(v_idx));
+      v_low  : Integer := Integer(Float'Floor(v_idx));
       v_high : Integer := v_low + 1;
-      b_low : Integer := Integer(Float'Floor(b_idx));
+      b_low  : Integer := Integer(Float'Floor(b_idx));
       b_high : Integer := b_low + 1;
       
       -- Get fractional parts
@@ -31,21 +33,21 @@ package body Rice_Distribution is
       b_frac : Float := b_idx - Float(b_low);
       
       -- Boundary checking
-      v_low_safe : Integer;
+      v_low_safe  : Integer;
       v_high_safe : Integer;
-      b_low_safe : Integer;
+      b_low_safe  : Integer;
       b_high_safe : Integer;
       
       -- Values at corners
       Q11, Q12, Q21, Q22 : Float;
-      R1, R2 : Float;
-      Result : Float;
+      R1, R2             : Float;
+      Result             : Float;
       
    begin
       -- Clamp indices to valid range [1..150]
-      v_low_safe := Integer'Max(1, Integer'Min(150, v_low));
+      v_low_safe  := Integer'Max(1, Integer'Min(150, v_low));
       v_high_safe := Integer'Max(1, Integer'Min(150, v_high));
-      b_low_safe := Integer'Max(1, Integer'Min(150, b_low));
+      b_low_safe  := Integer'Max(1, Integer'Min(150, b_low));
       b_high_safe := Integer'Max(1, Integer'Min(150, b_high));
       
       -- Get values at the four corners
@@ -66,8 +68,8 @@ package body Rice_Distribution is
    
    
    function Get_Rice_CDF(v : Float; b : Float) return Float is
-      v_idx : Float;
-      b_idx : Float;
+      v_idx  : Float;
+      b_idx  : Float;
       Result : Float;
    begin
       -- Check if values are within table bounds
