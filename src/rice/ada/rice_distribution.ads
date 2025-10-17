@@ -8,6 +8,7 @@ package Rice_Distribution is
    -- v values: 2 to 150 (150 points)
    -- b values: 48.6846 to 150 (150 points)
    -- sigma = 10
+
    Rice_Lookup : constant Rice_Table := (
       -- Row 1 (v=2)
       1 => (others => 0.0),  -- Replace with actual values from CSV
@@ -22,7 +23,7 @@ package Rice_Distribution is
    V_Max : constant Float := 150.0;
    B_Min : constant Float := 48.6846;
    B_Max : constant Float := 150.0;
-   Sigma :: constant Float := 10.0;
+   Sigma : constant Float := 10.0;
    
    -- Main function: Get Rice CDF value with interpolation
    function Get_Rice_CDF(V : Float; B : Float) return Float;
