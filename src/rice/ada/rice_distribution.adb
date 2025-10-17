@@ -15,26 +15,26 @@ package body Rice_Distribution is
    );
 
    function Bilinear_Interpolate(
-      V_Idx : Float; 
-      B_Idx : Float; 
+      v_idx : Float; 
+      b_idx : Float; 
       Table : Rice_Table
    ) return Float is
       
       -- Get integer indices
-      V_Low : Integer := Integer(Float'Floor(V_Idx));
-      V_High : Integer := V_Low + 1;
-      B_Low : Integer := Integer(Float'Floor(B_Idx));
-      B_High : Integer := B_Low + 1;
+      v_low : Integer := Integer(Float'Floor(v_idx));
+      v_high : Integer := v_low + 1;
+      b_low : Integer := Integer(Float'Floor(b_idx));
+      b_high : Integer := b_low + 1;
       
       -- Get fractional parts
-      V_Frac : Float := V_Idx - Float(V_Low);
-      B_Frac : Float := B_Idx - Float(B_Low);
+      v_frac : Float := v_idx - Float(v_low);
+      b_frac : Float := b_idx - Float(b_low);
       
       -- Boundary checking
-      V_Low_Safe : Integer;
-      V_High_Safe : Integer;
-      B_Low_Safe : Integer;
-      B_High_Safe : Integer;
+      v_low_safe : Integer;
+      v_high_safe : Integer;
+      b_low_safe : Integer;
+      b_high_safe : Integer;
       
       -- Values at corners
       Q11, Q12, Q21, Q22 : Float;
@@ -43,51 +43,51 @@ package body Rice_Distribution is
       
    begin
       -- Clamp indices to valid range [1..150]
-      V_Low_Safe := Integer'Max(1, Integer'Min(150, V_Low));
-      V_High_Safe := Integer'Max(1, Integer'Min(150, V_High));
-      B_Low_Safe := Integer'Max(1, Integer'Min(150, B_Low));
-      B_High_Safe := Integer'Max(1, Integer'Min(150, B_High));
+      v_low_safe := Integer'Max(1, Integer'Min(150, v_low));
+      v_high_safe := Integer'Max(1, Integer'Min(150, v_high));
+      b_low_safe := Integer'Max(1, Integer'Min(150, b_low));
+      b_high_safe := Integer'Max(1, Integer'Min(150, b_high));
       
       -- Get values at the four corners
-      Q11 := Table(V_Low_Safe, B_Low_Safe);
-      Q12 := Table(V_Low_Safe, B_High_Safe);
-      Q21 := Table(V_High_Safe, B_Low_Safe);
-      Q22 := Table(V_High_Safe, B_High_Safe);
+      Q11 := Table(v_low_safe, b_low_safe);
+      Q12 := Table(v_low_safe, b_high_safe);
+      Q21 := Table(v_high_safe, b_low_safe);
+      Q22 := Table(v_high_safe, b_high_safe);
       
       -- Interpolate along b direction first
-      R1 := Q11 * (1.0 - B_Frac) + Q12 * B_Frac;
-      R2 := Q21 * (1.0 - B_Frac) + Q22 * B_Frac;
+      R1 := Q11 * (1.0 - b_frac) + Q12 * b_frac;
+      R2 := Q21 * (1.0 - b_frac) + Q22 * b_frac;
       
       -- Then interpolate along v direction
-      Result := R1 * (1.0 - V_Frac) + R2 * V_Frac;
+      Result := R1 * (1.0 - v_frac) + R2 * v_frac;
       
       return Result;
    end Bilinear_Interpolate;
    
    
-   function Get_Rice_CDF(V : Float; B : Float) return Float is
-      V_Idx : Float;
-      B_Idx : Float;
+   function Get_Rice_CDF(v : Float; b : Float) return Float is
+      v_idx : Float;
+      b_idx : Float;
       Result : Float;
    begin
       -- Check if values are within table bounds
-      if V < V_Min or V > V_Max or B < B_Min or B > B_Max then
+      if v < v_min or v > v_max or b < b_min or b > b_max then
          -- Return boundary value or raise exception
          -- For now, clamp to boundary
          return 0.0;  -- Or handle out-of-bounds case appropriately
       end if;
       
       -- Map v and b to table indices (1-based, range 1..150)
-      V_Idx := ((V - V_Min) / (V_Max - V_Min)) * 149.0 + 1.0;
-      B_Idx := ((B - B_Min) / (B_Max - B_Min)) * 149.0 + 1.0;
+      v_idx := ((v - v_min) / (v_max - v_min)) * 149.0 + 1.0;
+      b_idx := ((b - b_min) / (b_max - b_min)) * 149.0 + 1.0;
       
       -- Check if we hit exact table values (avoid unnecessary interpolation)
-      if Float'Remainder(V_Idx, 1.0) = 0.0 and Float'Remainder(B_Idx, 1.0) = 0.0 then
+      if Float'Remainder(v_idx, 1.0) = 0.0 and Float'Remainder(b_idx, 1.0) = 0.0 then
          -- Exact table lookup
-         return Rice_Lookup(Integer(V_Idx), Integer(B_Idx));
+         return Rice_Lookup(Integer(v_idx), Integer(b_idx));
       else
          -- Bilinear interpolation
-         return Bilinear_Interpolate(V_Idx, B_Idx, Rice_Lookup);
+         return Bilinear_Interpolate(v_idx, b_idx, Rice_Lookup);
       end if;
    end Get_Rice_CDF;
 
