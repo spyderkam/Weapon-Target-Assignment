@@ -1,5 +1,19 @@
 package body Rice_Distribution is
 
+   -- Hard-coded lookup table (150x150 asymptotic table)
+   -- This contains the values from riceTable.csv
+   -- v values: 2 to 150 (150 points)
+   -- b values: 48.6846 to 150 (150 points)
+   -- sigma = 10
+   Rice_Lookup : constant Rice_Table := (
+      -- Row 1 (v=2)
+      1 => (others => 0.0),  -- Replace with actual values from CSV
+      -- Row 2 (v=~3.01)
+      2 => (others => 0.0),  -- Replace with actual values from CSV
+      -- ... Continue for all 150 rows
+      others => (others => 0.0)  -- Placeholder
+   );
+
    function Bilinear_Interpolate(
       V_Idx : Float; 
       B_Idx : Float; 
