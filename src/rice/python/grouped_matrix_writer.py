@@ -43,11 +43,8 @@ def format_row(row, row_number):
     for line in lines[1:]:
         result += ",\n" + indent + line
     
-    # Close the parenthesis and add ellipsis if there are multiple lines
-    if len(lines) > 1:
-        result += ",\n" + indent + "...)"
-    else:
-        result += ")"
+    # Close the parenthesis
+    result += ")"
     
     return result
 
