@@ -50,8 +50,12 @@ def write_matrix_to_txt(matrix, txt_file_path):
         raise ValueError(f"Error: CSV has {len(matrix)} rows, exceeding 3-digit limit (max 999 rows allowed)")
     
     with open(txt_file_path, mode='w') as txt_file:
+        total_rows = len(matrix)
         for row_number, row in enumerate(matrix, start=1):
             formatted_row = format_row(row, row_number)
+            # Remove trailing comma if this is the last row
+            if row_number == total_rows and formatted_row.endswith('),'):
+                formatted_row = formatted_row[:-1]  # Remove the last character (comma)
             txt_file.write(formatted_row + '\n')
 
 if __name__ == "__main__":
