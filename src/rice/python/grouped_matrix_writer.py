@@ -3,6 +3,8 @@
 
 import csv
 
+n = 5  # Number of values per line
+
 def read_matrix_from_csv(csv_file_path):
     with open(csv_file_path, mode='r', newline='') as csv_file:
         reader = csv.reader(csv_file)
@@ -24,10 +26,10 @@ def format_row(row, row_number):
     else:  # 3 digits
         indent = "        "  # 8 spaces to align with "100 => ("
     
-    # Group values into sets of 3
+    # Group values into sets of n
     lines = []
-    for i in range(0, len(row), 3):
-        group = row[i:i+3]
+    for i in range(0, len(row), n):
+        group = row[i:i+n]
         # Format with comma after each value
         formatted_group = ", ".join(group)
         lines.append(formatted_group)
