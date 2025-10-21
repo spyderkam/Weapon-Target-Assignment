@@ -10,6 +10,6 @@ printf "Running ${filename}.adb\n\n"
 
 ./$filename
 rm -f $filename 
-rm -f $filename.ali $filename.o
+rm -f *.ali *.o
 
 #cd ~
