@@ -20,9 +20,9 @@ def format_row(row, row_number):
     # Calculate indentation based on row number digits
     num_digits = len(str(row_number))
     if num_digits == 1:
-        indent = "      "  # 6 spaces to align with "1 => ("
+        indent = "      "    # 6 spaces to align with "1 => ("
     elif num_digits == 2:
-        indent = "       "  # 7 spaces to align with "10 => ("
+        indent = "       "   # 7 spaces to align with "10 => ("
     else:  # 3 digits
         indent = "        "  # 8 spaces to align with "100 => ("
     
@@ -60,7 +60,7 @@ def write_matrix_to_txt(matrix, txt_file_path):
             formatted_row = format_row(row, row_number)
             txt_file.write(formatted_row + '\n')
 
-def main():
+if __name__ == "__main__":
     csv_file_path = 'riceTable.csv'            # Input CSV file path
     txt_file_path = 'riceTable_formatted.txt'  # Output TXT file path
     
@@ -71,6 +71,3 @@ def main():
     write_matrix_to_txt(matrix, txt_file_path)
     
     print(f"Matrix has been successfully written to {txt_file_path}")
-
-if __name__ == "__main__":
-    main()
