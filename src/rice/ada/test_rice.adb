@@ -82,5 +82,4 @@ begin
    end loop;
    
    Put_Line("Exiting test program.");
-   
 end Test_Rice;
