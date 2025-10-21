@@ -27,6 +27,8 @@ elif [ $MATCH_COUNT -eq 1 ]; then
         set expandtab
         " Ensure syntax highlighting remains enabled
         syntax on
+        " Display absolute line numbers
+        set number
         
 EOF
     fi
