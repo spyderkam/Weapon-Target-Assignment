@@ -1,9 +1,8 @@
-
 with Ada.Float_Text_IO;     use Ada.Float_Text_IO;
 with Ada.Text_IO;           use Ada.Text_IO;
 with Rice_Distribution;     use Rice_Distribution;
 
--- Objective: Interactive test program for Rice distribution CDF lookup functionality
+-- Objective: Interactive test program for Rice distribution CDF lookup functionality.
 
 procedure Test_Rice is
     v_input      : Float;
@@ -83,5 +82,4 @@ begin
     end loop;
     
     Put_Line("Exiting test program.");
-    
 end Test_Rice;
