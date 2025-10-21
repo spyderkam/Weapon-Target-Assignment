@@ -40,7 +40,7 @@ def format_row(row, row_number):
     # Add subsequent lines with proper indentation
     for line in lines[1:]: result += ",\n" + indent + line
     # Close the parenthesis
-    result += ")"
+    result += "),"
     
     return result
 
