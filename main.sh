@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
-filename=wta_sim
+filename=test_rice_simple
 
-cd src
+cd src/rice/ada
 gnatmake ${filename}.adb
 
 clear
 printf "Running ${filename}.adb\n\n"
 
 ./$filename
-rm -f $filename $filename.ali $filename.o
+rm -f $filename 
+rm -f $filename.ali $filename.o
+
 #cd ~
