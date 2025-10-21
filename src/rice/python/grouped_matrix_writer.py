@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 
 import csv
@@ -35,16 +34,11 @@ def format_row(row, row_number):
         lines.append(formatted_group)
     
     # Build the output
-    if not lines:
-        return f"{row_number} => ()"
-    
+    if not lines: return f"{row_number} => ()"
     # First line starts with row number
     result = f"{row_number} => ({lines[0]}"
-    
     # Add subsequent lines with proper indentation
-    for line in lines[1:]:
-        result += ",\n" + indent + line
-    
+    for line in lines[1:]: result += ",\n" + indent + line
     # Close the parenthesis
     result += ")"
     
@@ -66,7 +60,6 @@ if __name__ == "__main__":
     
     # Read the matrix from CSV
     matrix = read_matrix_from_csv(csv_file_path)
-    
     # Write the formatted output to TXT
     write_matrix_to_txt(matrix, txt_file_path)
     
