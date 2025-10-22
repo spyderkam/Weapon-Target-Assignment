@@ -40,3 +40,8 @@ print(f'Asymptotic (p) at (v={v}, b={b}) = {p:.6f}')
 
 echo ""
 echo "========================================"
+
+# Cleanup compiled Ada files
+cd src/rice/ada
+rm -f test_rice_simple test_rice_simple.ali test_rice_simple.o
+cd - > /dev/null
