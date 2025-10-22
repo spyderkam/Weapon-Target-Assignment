@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 
 
-def calc_rice_cdf_asymp(v: float, sig: float, b: float) -> Tuple[float, float]:
+def calc_rice_cdf_asymp(v: float, sig: float, b: float, calc_q: bool = True) -> Tuple[float, Optional[float]]:
     """
     Evaluate CDF of Rice distribution with offset v at x = b.
     
@@ -25,13 +25,15 @@ def calc_rice_cdf_asymp(v: float, sig: float, b: float) -> Tuple[float, float]:
         Scale parameter (sigma)
     b : float
         Evaluation point (fuel budget)
+    calc_q : bool, optional
+        If True, calculate exact Rice CDF. If False, return None for q. Default is True.
     
     Returns
     -------
     p : float
         Asymptotic approximation of Rice CDF
-    q : float
-        Exact Rice CDF value
+    q : float or None
+        Exact Rice CDF value if calc_q is True, otherwise None
     """
     
     # Rescale inputs wrt sigma
@@ -52,11 +54,14 @@ def calc_rice_cdf_asymp(v: float, sig: float, b: float) -> Tuple[float, float]:
     else:
         p = cdf_norm
     
-    # Exact calculation using numerical integration
-    def integrand(x):
-        return x * np.exp(-(x**2 + v_norm**2) / 2) * special.i0(v_norm * x)
-    
-    q, _ = integrate.quad(integrand, 0, b_norm)
+    # Exact calculation using numerical integration (only if requested)
+    if calc_q:
+        def integrand(x):
+            return x * np.exp(-(x**2 + v_norm**2) / 2) * special.i0(v_norm * x)
+        
+        q, _ = integrate.quad(integrand, 0, b_norm)
+    else:
+        q = None
     
     return p, q
 

@@ -33,10 +33,9 @@ v = ${v}
 b = ${b}
 sig = 1.0
 
-p, q = calc_rice_cdf_asymp(v, sig, b)
+p, q = calc_rice_cdf_asymp(v, sig, b, calc_q=False)
 
 print(f'Asymptotic (p) at (v={v}, b={b}) = {p:.6f}')
-#print(f'Exact (q) at (v={v}, b={b}) = {q:.6f}')
 "
 
 echo ""
