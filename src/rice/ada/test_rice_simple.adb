@@ -1,16 +1,25 @@
+
 with Ada.Float_Text_IO;
 with Ada.Text_IO;
+with Ada.Command_Line;
 with Rice_Distribution;
 
 procedure Test_Rice_Simple is
     use Ada.Float_Text_IO;
     use Ada.Text_IO;
+    use Ada.Command_Line;
     use Rice_Distribution;
     
-    v      : Float := 10.0;
-    b      : Float := 75.0;
+    v      : Float := 10.0;  -- Default value
+    b      : Float := 75.0;  -- Default value
     result : Float;
 begin
+    -- Override defaults if command-line arguments are provided
+    if Argument_Count >= 2 then
+        v := Float'Value(Argument(1));
+        b := Float'Value(Argument(2));
+    end if;
+    
     result := Get_Rice_CDF(v, b);
     
     Put("Value at (v=");
