@@ -1,4 +1,3 @@
-
 with Ada.Float_Text_IO;
 with Ada.Text_IO;
 with Rice_Distribution;
