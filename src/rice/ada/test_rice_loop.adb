@@ -9,7 +9,7 @@ procedure Test_Rice_Loop is
     use Rice_Distribution;
     
     -- Single variable to control number of points for both v and b
-    num_points : constant Integer := 20;
+    num_points : constant Integer := 150;
     
     v_start : constant Float := 2.0;
     v_end   : constant Float := 150.0;
