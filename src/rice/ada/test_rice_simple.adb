@@ -1,13 +1,12 @@
-
+with Ada.Command_Line;
 with Ada.Float_Text_IO;
 with Ada.Text_IO;
-with Ada.Command_Line;
 with Rice_Distribution;
 
 procedure Test_Rice_Simple is
+    use Ada.Command_Line;
     use Ada.Float_Text_IO;
     use Ada.Text_IO;
-    use Ada.Command_Line;
     use Rice_Distribution;
     
     v      : Float := 10.0;  -- Default value
