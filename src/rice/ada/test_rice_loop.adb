@@ -23,7 +23,13 @@ procedure Test_Rice_Loop is
     b_step_size : Float;
     result : Float;
     
+    -- File handle for output
+    Output_File : File_Type;
+    
 begin
+    -- Open the output file for writing
+    Create(Output_File, Out_File, "rice_cdf_results.dat");
+    
     -- Calculate step sizes based on num_points
     v_step_size := (v_end - v_start) / Float(num_points - 1);
     b_step_size := (b_end - b_start) / Float(num_points - 1);
@@ -39,14 +45,17 @@ begin
             -- Call Get_Rice_CDF
             result := Get_Rice_CDF(v_current, b_current);
             
-            -- Print in format: C(v_value, b_value) = result
-            Put("C(");
-            Put(v_current, Fore => 1, Aft => 4, Exp => 0);
-            Put(", ");
-            Put(b_current, Fore => 1, Aft => 4, Exp => 0);
-            Put(") = ");
-            Put(result, Fore => 1, Aft => 4, Exp => 0);
-            New_Line;
+            -- Write in format: C(v_value, b_value) = result
+            Put(Output_File, "C(");
+            Put(Output_File, v_current, Fore => 1, Aft => 4, Exp => 0);
+            Put(Output_File, ", ");
+            Put(Output_File, b_current, Fore => 1, Aft => 4, Exp => 0);
+            Put(Output_File, ") = ");
+            Put(Output_File, result, Fore => 1, Aft => 4, Exp => 0);
+            New_Line(Output_File);
         end loop;
     end loop;
+    
+    -- Close the output file
+    Close(Output_File);
 end Test_Rice_Loop;
