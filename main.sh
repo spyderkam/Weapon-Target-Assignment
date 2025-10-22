@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-filename=test_rice_simple
+filename=test_rice_loop
 
 cd src/rice/ada
 gnatmake ${filename}.adb
