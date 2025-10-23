@@ -43,5 +43,6 @@ echo "========================================"
 
 # Cleanup compiled Ada files
 cd src/rice/ada
-rm -f test_rice_simple test_rice_simple.ali test_rice_simple.o
+rm -f test_rice_simple
+rm -f *.ali *.o
 cd - > /dev/null
